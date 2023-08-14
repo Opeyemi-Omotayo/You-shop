@@ -5,18 +5,20 @@ import { TfiClose } from "react-icons/tfi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiHomeSmile, BiSearchAlt2 } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
+import Store from "../../store/Store";
 
 const Header = () => {
   const [nav, setNav] = useState(false);
+  const { cartArray } = Store();
 
   return (
     <>
       <nav className="font-Lato">
         <div className="lg:flex hidden bg-black p-4 text-white items-center">
-          <div className="flex items-center">
+          <Link to='/' className="flex items-center">
             <BiHomeSmile className="text-orange-500 w-8 h-8" />
             <h1>You Shop</h1>
-          </div>
+          </Link>
           <div className="flex flex-1 items-center px-5 ">
             <input
               type="text"
@@ -29,17 +31,23 @@ const Header = () => {
           </div>
           <div className="flex">
             <div className="flex items-center mx-2">
-              <AiOutlineUser className="text-orange-500" />
-              <span>Sign in</span>
+              <a href="/accounts" className="flex items-center">
+                <AiOutlineUser className="text-orange-500" />
+                <span>Sign in</span>
+              </a>
             </div>
             <div className="mx-2">
-              <span>Help</span>
+              <a href="/help">Help</a>
             </div>
-            <div className="flex items-center bg-stone-800 rounded-md mx-2">
-              <span>
-                <AiOutlineShoppingCart className="text-orange-500 mx-2" />
-              </span>
-              <span className="mr-2">0</span>
+            <div className="flex items-center  mx-2">
+              <a href="/cart" className="flex items-center">
+                <span>
+                  <AiOutlineShoppingCart className="text-orange-500 " />
+                </span>
+                <span className="relative right-2 bg-stone-700 bottom-2 h-4 w-4 text-white flex items-center justify-center text-xs rounded-full">
+                  {cartArray.length}
+                </span>
+              </a>
             </div>
           </div>
         </div>
