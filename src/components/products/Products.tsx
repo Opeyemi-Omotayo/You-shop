@@ -1,4 +1,5 @@
 import React from "react";
+import ProductCard from "../../elements/products/ProductCard";
 
 export type ProductItem = {
   title: string;
@@ -11,7 +12,7 @@ export type ProductItem = {
 
 const product: ProductItem[] = [
   {
-    title: "Amazon Echo (3rd generation) | Smart speaker with Alexa, Charcoal Fabric",
+    title: "Amazon Echo (3rd generation)",
     category: "appliances",
     quantity: 1,
     price: "52",
@@ -19,7 +20,7 @@ const product: ProductItem[] = [
     id: 1,
   },
   {
-    title: "IFB 30 L Convection Microwave Oven (30BRC2, Black, With Starter Kit)",
+    title: "IFB 30 L Convection Microwave Oven",
     category: "appliances",
     quantity: 1,
     price: "239",
@@ -27,7 +28,7 @@ const product: ProductItem[] = [
     id: 2,
   },
   {
-    title: "Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor - Super Ultra Wide Dual WQHD 5120 x 1440",
+    title: "Samsung 49' Curved LED Gaming Monitor ",
     category: "appliances",
     quantity: 1,
     price: "1095",
@@ -35,7 +36,7 @@ const product: ProductItem[] = [
     id: 3,
   },
   {
-    title: "Mama'S Pride Nigerian Parboiled Rice 10kg",
+    title: "Mama'S Pride Parboiled Rice 10kg",
     category: "grocery",
     quantity: 1,
     price: "13",
@@ -75,7 +76,7 @@ const product: ProductItem[] = [
     id: 8,
   },
   {
-    title: "Men's Sports Running Shoes -Multi Color",
+    title: "Men's Sports Running Shoes ",
     category: "fashion",
     quantity: 1,
     price: "8",
@@ -91,7 +92,7 @@ const product: ProductItem[] = [
     id: 10,
   },
   {
-    title: "Sale 5Pcs/Set Sale Silver Color Style Fashion Anklet Let On The Leg",
+    title: "Fashion Anklet Let On The Leg",
     category: "fashion",
     quantity: 1,
     price: "11",
@@ -119,7 +120,7 @@ const Products = () => {
   };
 
   return (
-    <main className="container mx-auto px-5 lg:px-10" id="product">
+    <main className="container mx-auto px-5 lg:px-10 font-Lato" id="product">
       <nav className="flex justify-between">
         <h1 className="text-2xl  font-semibold">
           Popular <span className="text-orange-500">Product</span>
@@ -132,7 +133,7 @@ const Products = () => {
         </ul>
       </nav>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:place-content-center gap-10 pt-8">
-
+<ProductCard  products={productsArray}/>
       </div>
     </main>
   );
