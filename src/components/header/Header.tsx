@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <>
-      <nav>
+      <nav className="font-Lato">
         <div className="lg:flex hidden bg-black p-4 text-white items-center">
           <div className="flex items-center">
             <BiHomeSmile className="text-orange-500 w-8 h-8" />
