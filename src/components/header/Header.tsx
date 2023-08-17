@@ -11,7 +11,7 @@ const Header = () => {
   const [nav, setNav] = useState(false);
   const { cartArray } = Store();
 
-  return (
+  return ( 
     <>
       <nav className="font-Lato">
         <div className="lg:flex hidden bg-black p-4 text-white items-center">
@@ -30,12 +30,15 @@ const Header = () => {
             </button>
           </div>
           <div className="flex">
+            <Link to="/accounts/login">
             <div className="flex items-center mx-2">
               <a href="/accounts" className="flex items-center">
                 <AiOutlineUser className="text-orange-500" />
                 <span>Sign in</span>
               </a>
             </div>
+            </Link>
+            
             <div className="mx-2">
               <a href="/help">Help</a>
             </div>

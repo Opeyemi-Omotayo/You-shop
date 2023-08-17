@@ -11,7 +11,7 @@ import {
   
   const Footer = () => {
     return (
-      <footer id="contact" className="container grid grid-cols-1 px-5 pb-4 mx-auto lg:flex lg:justify-between sm:grid-cols-2 gap-y-10 lg:gap-y-0 lg:px-10">
+      <footer id="contact" className="container mt-[8rem]  grid grid-cols-1 px-5 pb-4 mx-auto lg:flex lg:justify-between sm:grid-cols-2 gap-y-10 lg:gap-y-0 lg:px-10">
         <div>
           <h1 className="text-3xl font-bold">
            You Shop

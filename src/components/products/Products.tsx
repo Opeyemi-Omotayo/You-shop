@@ -120,7 +120,7 @@ const Products = () => {
   };
 
   return (
-    <main className="container mx-auto px-5 lg:px-10 font-Lato" id="product">
+    <main className="container mt-[3rem] mx-auto px-5 lg:px-10 font-Lato" id="product">
       <nav className="flex justify-between">
         <h1 className="text-2xl  font-semibold">
           Popular <span className="text-orange-500">Product</span>
