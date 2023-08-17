@@ -2,6 +2,7 @@ import Store from "../../store/Store";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BiArrowBack } from "react-icons/bi";
 import React from "react";
+import Banner from "../banner/Banner";
 
 
 const Cart = () => {
@@ -35,9 +36,9 @@ const Cart = () => {
   );
 
   const billings = {
-    tax: 3.5,
+    tax: 3,
     shipping: 10,
-    discount: 5.0,
+    discount: 4,
     total: totalPrice,
   };
 
@@ -47,17 +48,17 @@ const Cart = () => {
   }, [cartArray]);
 
   return (
-    <main className="mx-auto container px-5 lg:px-10 pt-12 lg:pt-20 font-Lato">
+    <main className="container px-5 pt-12 mx-auto lg:px-10 lg:pt-20 font-Lato">
       {cartArray.length === 0 ? (
-        <div className="flex items-center flex-col text-center justify-center space-y-5">
-          <h1 className="lg:text-6xl text-4xl sm:text-5xl font-bold ">
+        <div className="flex flex-col items-center justify-center space-y-5 text-center">
+          <h1 className="text-4xl font-bold lg:text-6xl sm:text-5xl ">
             Shopping Cart is <span className="text-orange-500">Empty</span>
           </h1>
           <p className="text-lg">
             Go to shop and add to cart product you'd like to buy.
           </p>
           <a href="/#product">
-            <button className="animate-verticalBounce flex items-center p-3 bg-orange-500 text-white rounded-md">
+            <button className="flex items-center p-3 text-white bg-orange-500 rounded-md animate-verticalBounce">
               <BiArrowBack className="mr-2" /> Return to Shop
             </button>
           </a>
@@ -66,7 +67,7 @@ const Cart = () => {
         <>
           <div>
             <h1 className="text-5xl font-bold">Shopping Cart</h1>
-            <p className="py-4 font-medium text-base">
+            <p className="py-4 text-base font-medium">
               There {cartArray.length === 1 ? 'is' : 'are'} {" "}
               <span className="font-semibold ">
                 {cartArray.length} {cartArray.length === 1 ? 'product' : 'products'} {" "}
@@ -75,11 +76,11 @@ const Cart = () => {
             </p>
           </div>
 
-          <section className="flex lg:flex-row flex-col justify-between py-10">
-            <div className="lg:w-8/12 w-full">
+          <section className="flex flex-col justify-between py-10 lg:flex-row">
+            <div className="w-full lg:w-8/12">
               <table className="w-full">
-                <thead className=" border-b">
-                  <tr className=" pb-2 flex justify-between items-center">
+                <thead className="border-b ">
+                  <tr className="flex items-center justify-between pb-2 ">
                     <th className="w-1/4">Product</th>
                     <th className="w-1/4">Price</th>
                     <th className="w-1/4">Quantity</th>
@@ -91,41 +92,41 @@ const Cart = () => {
                   {cart.map((item) => (
                     <tr
                       key={item.id}
-                      className=" border-b flex justify-between items-center py-5"
+                      className="flex items-center justify-between py-5 border-b "
                     >
-                      <td className="w-1/4 items-center justify-center   flex">
+                      <td className="flex items-center justify-center w-1/4">
                         <img
                           src={item.image}
                           alt="fruit"
-                          className="lg:w-28 lg:h-28 w-16 h-16 rounded-md "
+                          className="w-16 h-16 rounded-md lg:w-28 lg:h-28 "
                         />
                       </td>
-                      <td className="w-1/4 justify-center items-center text-lg flex">
+                      <td className="flex items-center justify-center w-1/4 text-lg">
                         <span className="font-medium">$</span>
                         {item.price}
                       </td>
-                      <td className="w-1/4 justify-center flex">
+                      <td className="flex justify-center w-1/4">
                         <button
-                          className="h-8 w-8"
+                          className="w-8 h-8"
                           onClick={() => handleDecrementQuantity(item.id)}
                         >
                           -
                         </button>
-                        <span className="px-2 flex items-center">{item.quantity} </span>
+                        <span className="flex items-center px-2">{item.quantity} </span>
                         <button
-                          className="h-8 w-8"
+                          className="w-8 h-8"
                           onClick={() => handleIncrementQuantity(item.id)}
                         >
                           +
                         </button>
                       </td>
-                      <td className="w-1/4 justify-center items-center text-lg flex">
+                      <td className="flex items-center justify-center w-1/4 text-lg">
                         <span className="font-medium">$</span>
                         {item.price * item.quantity}
                       </td>
 
                       <div
-                        className="w-1/4 cursor-pointer justify-center items-center text-lg flex"
+                        className="flex items-center justify-center w-1/4 text-lg cursor-pointer"
                         onClick={() => removeFromCart(item.id)}
                       >
                         <RiDeleteBinLine />
@@ -136,33 +137,33 @@ const Cart = () => {
               </table>
             </div>
 
-            <div className="lg:w-4/12 border ml-0 lg:ml-4 my-8 rounded-md h-fit p-5">
+            <div className="p-5 my-8 ml-0 border rounded-md lg:w-4/12 lg:ml-4 h-fit">
               <div className="flex justify-between py-3">
-                <h1 className="text-lg  font-semibold">
+                <h1 className="text-lg font-semibold">
                   Sub Total:
                 </h1>
                 <p className="text-lg font-medium">${billings.total}.00</p>
               </div>
               <div className="flex justify-between py-3">
-                <h1 className="text-lg  py-3 font-semibold">
+                <h1 className="py-3 text-lg font-semibold">
                   Discount:
                 </h1>
                 <p className="text-lg font-medium">${billings.discount}.00</p>
               </div>
               <div className="flex justify-between py-3">
-                <h1 className="text-lg  py-3 font-semibold">
+                <h1 className="py-3 text-lg font-semibold">
                   Shipping Fee:
                 </h1>
                 <p className="text-lg font-medium">${billings.shipping}.00</p>
               </div>
-              <div className="flex justify-between border-b py-3">
-                <h1 className="text-lg  py-3 font-semibold">
+              <div className="flex justify-between py-3 border-b">
+                <h1 className="py-3 text-lg font-semibold">
                   Estimated Tax:
                 </h1>
-                <p className="text-lg font-medium">${billings.tax}.00</p>
+                <p className="text-lg font-medium">${billings.tax}.50</p>
               </div>
-              <div className="flex justify-between items-center py-3">
-                <h1 className="text-lg  py-5 font-semibold">
+              <div className="flex items-center justify-between py-3">
+                <h1 className="py-5 text-lg font-semibold">
                   Total:
                 </h1>
                 <p className="text-lg font-medium">
@@ -177,7 +178,7 @@ const Cart = () => {
                 </p>
               </div>
               <button
-                className="p-3 w-full bg-orange-500 rounded-md text-white"
+                className="w-full p-3 text-white bg-orange-500 rounded-md"
                 onClick={() => {
                   alert('success');
                 }}
@@ -188,6 +189,7 @@ const Cart = () => {
           </section>
         </>
       )}
+      <Banner />
     </main>
   );
 };
