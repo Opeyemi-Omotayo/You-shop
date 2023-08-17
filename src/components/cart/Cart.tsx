@@ -78,7 +78,7 @@ const Cart = () => {
           <section className="flex lg:flex-row flex-col justify-between py-10">
             <div className="lg:w-8/12 w-full">
               <table className="w-full">
-                <thead className="">
+                <thead className=" border-b">
                   <tr className=" pb-2 flex justify-between items-center">
                     <th className="w-1/4">Product</th>
                     <th className="w-1/4">Price</th>
@@ -86,7 +86,6 @@ const Cart = () => {
                     <th className="w-1/4">Total</th>
                     <th className="w-1/4"></th>
                   </tr>
-                  <hr />
                 </thead>
                 <tbody className="">
                   {cart.map((item) => (
@@ -94,7 +93,7 @@ const Cart = () => {
                       key={item.id}
                       className=" border-b flex justify-between items-center py-5"
                     >
-                      <td className="w-1/4 items-center justify-center border p-2 flex">
+                      <td className="w-1/4 items-center justify-center   flex">
                         <img
                           src={item.image}
                           alt="fruit"
@@ -137,7 +136,7 @@ const Cart = () => {
               </table>
             </div>
 
-            <div className="lg:w-4/12 border ml-4 my-8 rounded-md h-fit p-5">
+            <div className="lg:w-4/12 border ml-0 lg:ml-4 my-8 rounded-md h-fit p-5">
               <div className="flex justify-between py-3">
                 <h1 className="text-lg  font-semibold">
                   Sub Total:

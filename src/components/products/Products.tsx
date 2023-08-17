@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ProductCard from "../../elements/products/ProductCard";
 
 export type ProductItem = {
@@ -110,30 +110,62 @@ const product: ProductItem[] = [
 ];
 
 const Products = () => {
-  const [productsArray, setProductArray] = React.useState(product);
+  const [productsArray, setProductArray] = useState(product);
+  const [activeFilter, setActiveFilter] = useState("all");
+
   const handleFilter = (value: string) => {
-    setProductArray(
-      product.filter(
-        (product) => product.category.toLowerCase() === value.toLowerCase()
-      )
-    );
+    setActiveFilter(value);
+    if (value === "all") {
+      setProductArray(product);
+    } else {
+      setProductArray(
+        product.filter(
+          (product) => product.category.toLowerCase() === value.toLowerCase()
+        )
+      );
+    }
   };
 
   return (
     <main className="container mt-[3rem] mx-auto px-5 lg:px-10 font-Lato" id="product">
       <nav className="flex justify-between">
-        <h1 className="text-2xl  font-semibold">
-          Popular <span className="text-orange-500">Product</span>
+        <h1 className="text-2xl font-semibold">
+          Popular <span className="text-orange-500">Products</span>
         </h1>
-        <ul className="justify-between md:flex hidden cursor-pointer space-x-10 font-medium text-gray-500">
-          <li onClick={() => setProductArray(product)}>All</li>
-          <li onClick={() => handleFilter("appliances")}>Appliances</li>
-          <li onClick={() => handleFilter("grocery")}>Grocery</li>
-          <li onClick={() => handleFilter("fashion")}>Fashion</li>
+        <ul className="justify-between hidden space-x-10 font-medium text-gray-500 cursor-pointer md:flex">
+          <li
+            onClick={() => handleFilter("all")}
+            className={`cursor-pointer ${activeFilter === "all" ? "border-b-2 border-orange-600" : ""
+              }`}
+          >
+            All
+          </li>
+          <li
+            onClick={() => handleFilter("appliances")}
+            className={`cursor-pointer ${activeFilter === "appliances" ? "border-b-2 border-orange-600" : ""
+              }`}
+          >
+            Appliances
+          </li>
+          <li
+            onClick={() => handleFilter("grocery")}
+            className={`cursor-pointer ${activeFilter === "grocery" ? "border-b-2 border-orange-600" : ""
+              }`}
+          >
+            Grocery
+          </li>
+          <li
+            onClick={() => handleFilter("fashion")}
+            className={`cursor-pointer ${activeFilter === "fashion" ? "border-b-2 border-orange-600" : ""
+              }`}
+          >
+            Fashion
+          </li>
+
         </ul>
       </nav>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:place-content-center gap-10 pt-8">
-<ProductCard  products={productsArray}/>
+      <div className="grid gap-10 pt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:place-content-center">
+        <ProductCard products={productsArray} />
       </div>
     </main>
   );

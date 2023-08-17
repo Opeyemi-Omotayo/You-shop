@@ -14,12 +14,12 @@ const Header = () => {
   return ( 
     <>
       <nav className="font-Lato">
-        <div className="lg:flex hidden bg-black p-4 text-white items-center">
+        <div className="lg:flex hidden bg-black py-4 px-8 text-white items-center">
           <Link to='/' className="flex items-center">
             <BiHomeSmile className="text-orange-500 w-8 h-8" />
             <h1>You Shop</h1>
           </Link>
-          <div className="flex flex-1 items-center px-5 ">
+          <div className="flex flex-1 items-center px-[3rem] ">
             <input
               type="text"
               placeholder="search..."
@@ -32,25 +32,23 @@ const Header = () => {
           <div className="flex">
             <Link to="/accounts/login">
             <div className="flex items-center mx-2">
-              <a href="/accounts" className="flex items-center">
                 <AiOutlineUser className="text-orange-500" />
                 <span>Sign in</span>
-              </a>
             </div>
             </Link>
             
             <div className="mx-2">
-              <a href="/help">Help</a>
+              <Link to="/help">Help</Link>
             </div>
             <div className="flex items-center  mx-2">
-              <a href="/cart" className="flex items-center">
+              <Link to="/cart" className="flex items-center">
                 <span>
                   <AiOutlineShoppingCart className="text-orange-500 " />
                 </span>
                 <span className="relative right-2 bg-stone-700 bottom-2 h-4 w-4 text-white flex items-center justify-center text-xs rounded-full">
                   {cartArray.length}
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -72,17 +70,17 @@ const Header = () => {
                 <a href="/#product">Products</a>
               </li>
               <li>
-                <a href="/#help">Help</a>
+                <Link to="/help">Help</Link>
               </li>
               <li className="cursor-pointer bg-white text-black p-2 w-32 flex items-center justify-center rounded-full">
-                <a href="/#accounts" className="flex items-center">
+                <Link to="/accounts/login" className="flex items-center">
                   <AiOutlineUser className="mr-2" /> Sign in
-                </a>
+                </Link>
               </li>
               <li className="cursor-pointer bg-black text-white p-2 w-32 flex items-center justify-center rounded-full">
-                <a href="/cart" className="flex items-center">
+                <Link to="/cart" className="flex items-center">
                   <AiOutlineShoppingCart className="mr-2" /> Cart
-                </a>
+                </Link>
               </li>
             </div>
           </ul>
