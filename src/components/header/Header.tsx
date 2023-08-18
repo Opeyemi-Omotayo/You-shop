@@ -33,7 +33,7 @@ const Header = () => {
             <Link to="/accounts/login">
             <div className="flex items-center mx-2">
                 <AiOutlineUser className="text-orange-500" />
-                <span>Sign in</span>
+                <span>Account</span>
             </div>
             </Link>
             
