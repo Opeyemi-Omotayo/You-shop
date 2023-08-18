@@ -10,7 +10,27 @@ function Register() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  
+  const navigate = useNavigate();
+  const auth = getAuth(app);
+
+  const register = (e: any) => {
+    e.preventDefault();
+
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      if(user){
+        toast('user created!');
+        navigate('/');
+      }
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      toast( errorCode, errorMessage );
+    });
+  };
+
   return (
     <div>
 <div className="flex flex-col items-center justify-center ">
