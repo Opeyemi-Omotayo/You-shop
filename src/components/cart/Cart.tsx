@@ -1,13 +1,27 @@
+import React from "react";
+
 import Store from "../../store/Store";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BiArrowBack } from "react-icons/bi";
-import React from "react";
 import Banner from "../banner/Banner";
+import { usePaystackPayment } from "react-paystack";
+import { toast } from "react-toastify";
 
+type PaystackProps = {
+  reference: string;
+  email: string;
+  amount: number;
+  publicKey: any;
+};
+
+type Props = {
+  modal: boolean;
+  setModal: (by: boolean) => void;
+};
 
 const Cart = () => {
   const { cartArray, removeFromCart } = Store();
-  const [cart, setCart] = React.useState(cartArray)
+  const [cart, setCart] = React.useState(cartArray);
 
   const handleDecrementQuantity = (itemId: number) => {
     setCart((prevCart: any) =>
@@ -41,6 +55,27 @@ const Cart = () => {
     discount: 4,
     total: totalPrice,
   };
+
+  const config: PaystackProps = {
+    reference: new Date().getTime().toString(),
+    email: "you.shop@gmail.com",
+    amount:
+      Math.round(
+        billings.tax + billings.total + billings.shipping - billings.discount
+      ) * 80000,
+    publicKey: process.env.REACT_APP_PAYSTACK_PUBLIC_KEY,
+  };
+
+  
+
+  const initializePayment = usePaystackPayment(config);
+  const onSuccess = () => {
+    toast.success("Payment successfully completed");
+  };
+  const onClose = () => {
+    toast.error("Your order was cancelled");
+  };
+
 
 
   React.useEffect(() => {
@@ -180,7 +215,7 @@ const Cart = () => {
               <button
                 className="w-full p-3 text-white bg-orange-500 rounded-md"
                 onClick={() => {
-                  alert('success');
+                  initializePayment(onSuccess, onClose);
                 }}
               >
                 Checkout
@@ -195,3 +230,4 @@ const Cart = () => {
 };
 
 export default Cart;
+

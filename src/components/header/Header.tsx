@@ -7,6 +7,7 @@ import { BiHomeSmile, BiSearchAlt2 } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
 import Store from "../../store/Store";
 
+
 const Header = () => {
   const [nav, setNav] = useState(false);
   const { cartArray } = Store();
@@ -33,7 +34,7 @@ const Header = () => {
             <Link to="/accounts/login">
             <div className="flex items-center mx-2">
                 <AiOutlineUser className="text-orange-500" />
-                <span>Account</span>
+                <span className="ml-1">Account</span>
             </div>
             </Link>
             
