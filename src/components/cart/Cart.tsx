@@ -14,11 +14,6 @@ type PaystackProps = {
   publicKey: any;
 };
 
-type Props = {
-  modal: boolean;
-  setModal: (by: boolean) => void;
-};
-
 const Cart = () => {
   const { cartArray, removeFromCart } = Store();
   const [cart, setCart] = React.useState(cartArray);
@@ -36,7 +31,6 @@ const Cart = () => {
   const handleIncrementQuantity = (itemId: number) => {
     setCart((prevCart: any) =>
       prevCart.map((item: any) => {
-        console.log(item.id);
         return item.id === itemId
           ? { ...item, quantity: item.quantity + 1 }
           : item;
@@ -75,8 +69,6 @@ const Cart = () => {
   const onClose = () => {
     toast.error("Your order was cancelled");
   };
-
-
 
   React.useEffect(() => {
     setCart(cartArray);
