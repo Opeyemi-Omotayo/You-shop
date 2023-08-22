@@ -24,5 +24,5 @@ A responsive and user-friendly ecommerce store built with the latest frontend te
 
 ### Production
 
-[Production Link](https://you-shop.vercel.app/) 
+Product display : [Production Website Link](https://you-shop.vercel.app/)
 
