@@ -8,8 +8,6 @@ import { toast } from "react-toastify";
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-
   const navigate = useNavigate();
   const auth = getAuth(app);
 
@@ -41,12 +39,6 @@ function Register() {
 
         <form>
         <h5>Username</h5>
-          <input
-            type="text"
-            className="w-full p-2 border border-gray-500 bg-gray-50"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
 
           <h5>E-mail</h5>
           <input
